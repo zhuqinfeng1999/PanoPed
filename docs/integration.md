@@ -16,6 +16,24 @@ Use the official MOTIP and HAT repositories/checkpoints under their upstream ter
 
 Real Box-fit and Support-auto need their own fixed geometric converters and evaluator targets. Applying an S-native head to R Box-fit without the correct R converter is invalid; reporting a Support-auto result as a Box-fit result is equally invalid. Source-only means the readout was trained on S and did not fit real labels; it does not imply that the detector or tracker never used external pretraining.
 
+## Evaluation protocols
+
+| Protocol | Training and model selection | Test target | Reporting rule |
+|---|---|---|---|
+| PanoPed-S | 44 TRAIN sequences; 8 VAL sequences | 8 held-out TEST sequences, 14,400 frames | Native mask-derived BFoV, all sequences and both seeds |
+| PanoPed-R Box-fit LOSO | Each fold trains on two labeled sequences | The other labeled sequence, 16,247 pooled out-of-fold frames | Native oriented/asymmetric R Box-fit BFoV, pooled TrackEval counts |
+| S → R Support-Auto | Sextant readout trained only on S, no R label fit | All three labeled R sequences under frozen Support-Auto scoring | Same tracker and detection stream for ordinary versus Sextant readout; both seeds and each sequence |
+
+The R-only and source-only runs are distinct. The auxiliary Support-Auto evaluator must be frozen before evaluating a method, and every comparison method must be rescored on that same target. A score on the original R Box-fit target cannot be compared numerically with a Support-Auto score. Identity metrics can change after localization changes because evaluation matches different regions; that does not mean the identity network was retrained or improved.
+
+### Reproduction checklist
+
+1. Record the dataset release/version and its verifier result, the LOSO or S split files, and image resolution.
+2. Record the upstream detector/tracker code version, pretrained checkpoint SHA-256, query dimensionality, and association settings.
+3. Keep detector outputs, score thresholds, physical IDs and track state unchanged when applying Sextant; only the final spherical region may differ.
+4. Score every held-out sequence, including false positives, with the same native-region evaluator and all 19 IoU thresholds. Aggregate original counts rather than averaging sequence percentages.
+5. Publish both Sextant seeds and the same-stream ordinary baseline. Separate S, R Box-fit, and R Support-Auto tables.
+
 ## What is not included
 
 The internal training-bank exporter is entangled with frozen baseline implementations and machine-specific experiment receipts, so it is not copied verbatim. To reproduce the exact published numbers, use the matching upstream detector/tracker checkpoint and preserve the per-query bank contract above. We will add a clean upstream adapter and checkpoint manifests before public repository release. Until then this is a private code-review draft, not a complete one-command reproduction package.
