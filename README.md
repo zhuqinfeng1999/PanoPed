@@ -2,14 +2,22 @@
 
 # PanoPed 🌐
 
-### Beyond bounding boxes for sim-to-real panoramic pedestrian tracking
+### PanoPed: Beyond Bounding Boxes for Sim-to-Real Panoramic Pedestrian Tracking
+
+**Qinfeng Zhu¹˒² · Weiguang Zhao²˒³ · Yunxi Jiang⁴ · Anh Nguyen² · Lei Fan¹**
+
+<sub>¹ Xi'an Jiaotong-Liverpool University · ² University of Liverpool · ³ Duke Kunshan University · ⁴ CNRS</sub>
+
+Official repository for **“PanoPed: Beyond Bounding Boxes for Sim-to-Real Panoramic Pedestrian Tracking”**: the PanoPed-S and PanoPed-R benchmarks, the Sextant localization readout, release instructions, and evaluation protocols.
 
 **Fixed cameras · Quadrupeds · Drones · Native spherical localization**
 
-🟢 [![PanoPed-S](https://img.shields.io/badge/PanoPed--S-60_sequences-18A98C?style=for-the-badge)](#dataset-at-a-glance)
-🔵 [![PanoPed-R](https://img.shields.io/badge/PanoPed--R-5_sequences-4774BC?style=for-the-badge)](#dataset-at-a-glance)
-🟣 [![Sextant](https://img.shields.io/badge/Sextant-34%2C692_parameters-8C66C8?style=for-the-badge)](#sextant)
-▶️ [![Video](https://img.shields.io/badge/Introduction-59_seconds-E59A55?style=for-the-badge)](assets/intro.mp4)
+<p align="center">
+  <a href="#dataset-at-a-glance"><img alt="PanoPed-S: 60 sequences" src="https://img.shields.io/badge/PanoPed--S-60%20sequences-18A98C?style=flat-square"></a>
+  <a href="#dataset-at-a-glance"><img alt="PanoPed-R: 5 sequences" src="https://img.shields.io/badge/PanoPed--R-5%20sequences-4774BC?style=flat-square"></a>
+  <a href="#sextant"><img alt="Sextant: 34,692 parameters" src="https://img.shields.io/badge/Sextant-34%2C692%20params-8C66C8?style=flat-square"></a>
+  <a href="assets/intro.mp4"><img alt="Video introduction" src="https://img.shields.io/badge/Video-Introduction-E59A55?style=flat-square"></a>
+</p>
 
 [**Project page**](https://zhuqinfeng1999.github.io/PanoPed/) · [**Video introduction**](assets/intro.mp4) · [**Dataset downloads**](#download-datasets) · [**Data licenses**](#data-licenses)
 
@@ -42,11 +50,11 @@
 
 ## Dataset at a glance
 
-| Release | Cameras / scope | Supervision and evaluation target | Download |
-|:---|:---|:---|:---|
-| 🟢 **PanoPed-S v1.0.0** | 30 fixed + 18 quadruped + 12 drone; 60 × 1 minute; 108,000 frames | Rendered instance mask → spherical visible support | [S packages](https://drive.google.com/drive/folders/1PjL8_KBVAmPNd1Zony2MQ9ogg1B7d2CR?usp=sharing) |
-| 🔵 **PanoPed-R v0.9.0** | Five real fixed-camera sequences; 28,002 frames, including 16,247 labeled | Reviewed modal rectangle → oriented/asymmetric spherical Box-fit | [R packages](https://drive.google.com/drive/folders/1QYf_ocQALFYrwdfIa6g-bVwnnIQIXA9V?usp=sharing) |
-| 🟠 **R-Support-Auto v0.1** | Annotation-only extension of R's three labeled sequences | Human-box-prompted SAM2.1 mask → S-compatible visible support | [Extension](https://drive.google.com/drive/folders/1zpZPpaFzvKcGMS_wfT3lX-uariYtm4Cg?usp=sharing) |
+| Download | Size and cameras | Evaluation target |
+|:---|:---|:---|
+| 🟢 [PanoPed-S v1.0.0](https://drive.google.com/drive/folders/1PjL8_KBVAmPNd1Zony2MQ9ogg1B7d2CR?usp=sharing) | 60 sequences · 108,000 frames<br>30 fixed · 18 quadruped · 12 drone | Rendered mask → spherical visible support |
+| 🔵 [PanoPed-R v0.9.0](https://drive.google.com/drive/folders/1QYf_ocQALFYrwdfIa6g-bVwnnIQIXA9V?usp=sharing) | 5 real fixed-camera sequences<br>28,002 frames · 16,247 labeled | Reviewed box → spherical **Box-fit** |
+| 🟠 [R-Support-Auto v0.1](https://drive.google.com/drive/folders/1zpZPpaFzvKcGMS_wfT3lX-uariYtm4Cg?usp=sharing) | Automatic annotation extension<br>3 labeled real sequences | Box-prompted SAM2.1 mask → spherical visible support |
 
 **Support-Auto is not a replacement for R's original Box-fit leaderboard.** Its masks are automatic predictions, not manual pixel-level ground truth. All three release folders contain their own manifests and verification instructions.
 
