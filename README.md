@@ -27,7 +27,7 @@ Official repository for **“PanoPed: Beyond Bounding Boxes for Sim-to-Real Pano
 
 </div>
 
-> **Release status:** This repository remains private until the authors approve the public arXiv release. The package URLs below are author-provided locations; please check access before announcing public availability. The linked data releases have **research-only licenses distinct from the repository code license**.
+> **Public release:** The [project page](https://zhuqinfeng1999.github.io/PanoPed/) and this repository are public. Dataset access links, formats and release instructions are listed below. The linked data releases have **research-only licenses distinct from the repository code license**.
 
 ## Start here
 
@@ -253,4 +253,4 @@ PanoPed/
 
 ## Citation and contact
 
-The arXiv identifier is pending. Please cite the paper once posted; until then identify the dataset name and release version. For research or permissions questions, contact [Lei Fan](mailto:lei.fan@xjtlu.edu.cn). The [project page](https://zhuqinfeng1999.github.io/PanoPed/) will be published after author approval.
+The arXiv identifier is pending. Please cite the paper once posted; until then identify the dataset name and release version. For research or permissions questions, contact [Lei Fan](mailto:lei.fan@xjtlu.edu.cn). Visit the [project page](https://zhuqinfeng1999.github.io/PanoPed/) for an overview and video introduction.
